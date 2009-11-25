@@ -40,7 +40,10 @@ public interface IPelletManager extends IBioclipseManager {
         params = "String tripleStoreDirectoryPath",
         methodSummary = "Creates a new scalable Pellet-targeted store, " +
                 "(using the Jena TDB package, which stores on disk as a " +
-                "complement to memory, for scalability)"
+                "complement to memory, for scalability). " +
+                "tripleStoreDirectoryPath is the path to a folder to be " +
+                "used for the triple store, and is relative to the " +
+                "Bioclise workspace."
     )
     public IRDFStore createStore(String tripleStoreDirectoryPath); 
 
