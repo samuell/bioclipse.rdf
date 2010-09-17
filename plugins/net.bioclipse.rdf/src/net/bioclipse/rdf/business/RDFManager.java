@@ -394,6 +394,7 @@ public class RDFManager implements IBioclipseManager {
     		monitor = new NullProgressMonitor();
 
     	Model sparqlOutput = null;
+    	JenaModel rdfStore = null;
 
     	monitor.beginTask("Sparqling the remote service..", 100);
     	Query query = QueryFactory.create(sparqlQueryString);
@@ -403,11 +404,12 @@ public class RDFManager implements IBioclipseManager {
     	try {
     		sparqlOutput = qexec.execConstruct();
         	monitor.worked(20);
+        	rdfStore = new JenaModel( sparqlOutput );
     	} finally {
     		qexec.close();
         	monitor.done();
     	}
-    	IRDFStore rdfStore = (IRDFStore) sparqlOutput;
+    	    	
     	return rdfStore;
     }
     
